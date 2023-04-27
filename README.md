@@ -7,6 +7,7 @@ AxePress Labs - Playground is an example Next.JS app that uses WPGraphQL and Fau
 ## Feature Demos
 
 - [Add Block Theme Support](https://github.com/axewp/axepress-playground/blob/demo/block-theme-support/HowTo.md)
+- [Add Server Side Authentication](https://github.com/AxeWP/axepress-playground/blob/demo/server-side-auth/HowTo.md) (📢 WPEBuilders click here! )
 
 ## Prerequisites
 
