@@ -1,0 +1,13 @@
+/* purgecss start ignore */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+/* purgecss end ignore */
+@import "tailwindcss/utilities";
+
+/** Add your Theme CSS styles here.
+ *
+ *  E.g: @import './style.css';
+ */
+
+/* Add your Theme CSS overrides */
+@import './overrides.css';

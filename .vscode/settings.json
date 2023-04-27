@@ -1,0 +1,30 @@
+{
+	"eslint.validate": [
+		"vue",
+		"html",
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact"
+	],
+	"eslint.format.enable": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"files.associations": {
+		"*.css": "css"
+	},
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+}

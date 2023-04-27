@@ -1,0 +1,10 @@
+!/.*.js
+*.min.js
+*.d.ts
+.*cache
+.next/
+build/
+dist/
+node_modules/
+public/
+src/__generated__/

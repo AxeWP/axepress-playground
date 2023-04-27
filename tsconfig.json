@@ -1,0 +1,41 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"lib": [ "esnext", "dom", "dom.iterable" ],
+		"baseUrl": "./src",
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"sourceMap": true,
+		"paths": {
+			"@/components": [ "components" ],
+			"@/constants": [ "constants" ],
+			"@/features": [ "features" ],
+			"@/hooks": [ "hooks" ],
+			"@/graphql": [ "__generated__" ],
+			"@/lib/*": [ "lib/*" ],
+			"@/plugins/*": [ "plugins/*" ],
+			"@/styles/*": [ "styles/*" ],
+			"@/types": [ "types" ],
+			"@/utils/*": [ "utils/*" ],
+			"@faustConfig": [ "../faust.config.js" ],
+			"@possibleTypes": [ "../possibleTypes.json" ],
+			"@graphqlTypes": [ "__generated__/graphql.ts" ],
+			"@gql": [ "__generated__/index.ts" ]
+		},
+		"incremental": true
+	},
+	"include": [ "next-env.d.ts", "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx" ],
+	"exclude": [ "node_modules", "public", "src/__generated__" ]
+}
