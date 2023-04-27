@@ -44,7 +44,7 @@ This is the perfect use case for Tailwind's [utility classes](https://tailwindcs
 /* overrides.css */
 
 .size-full {
-	@apply relative;
+  @apply relative;
 }
 ```
 
@@ -57,27 +57,26 @@ For this example, we'll keep it simple and just add the [colors](https://github.
 ```js
 // tailwind.config.js
 module.exports = {
-	// rest of config.
-	theme: {
-		colors: {
-			transparent: 'transparent',
-			current: 'currentColor',
-			// Add your theme colors here.
-			base: '#ffffff',
-			contrast: '#000000',
-			primary: '#0000ff',
-			secondary: '#000099',
-			neutral: '#eeeeee',
-		}
-		screens: {
-			// We use the theme.json 'layout' values, as well as inspect the style.css file to see what breakpoints are used.
-			xs: '480px',   // Because _I_ want it ;-)
-			md: '640px', // From theme.json
-			lg: '800px', // from style.css
-			xl: '1200px' // from theme.json
-
-		}
-	}
+  // rest of config.
+  theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      // Add your theme colors here.
+      base: '#ffffff',
+      contrast: '#000000',
+      primary: '#0000ff',
+      secondary: '#000099',
+      neutral: '#eeeeee',
+    }
+    screens: {
+      // We use the theme.json 'layout' values, as well as inspect the style.css file to see what breakpoints are used.
+      xs: '480px',   // Because _I_ want it ;-)
+      md: '640px', // From theme.json
+      lg: '800px', // from style.css
+      xl: '1200px' // from theme.json
+    }
+  }
 }
 ```
 
