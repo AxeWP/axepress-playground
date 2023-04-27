@@ -28,13 +28,7 @@ export const CoreGroup: WordPressBlock<CoreGroupFragFragment & BlockFragFragment
 	const classNames = cn( attributes?.className, cssClassNames );
 
 	return <>
-		{ !! innerBlocks?.length && (
-			<Tag name={tagName} className={classNames} styleObj={styleObject} >
-				<WordPressBlocksViewer blocks={ innerBlocks as ContentBlock[] } fallbackBlock={DefaultBlock}/>
-			</Tag>
-		)}
-
-		{ ! innerBlocks?.length && !! renderedHtml && (
+		{ renderedHtml && (
 			<Parse html={ renderedHtml } />
 		) }
 	</>;
