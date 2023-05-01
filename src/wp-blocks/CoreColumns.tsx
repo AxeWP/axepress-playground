@@ -11,7 +11,7 @@ export const CoreColumns: WordPressBlock<CoreColumnFragFragment & BlockFragFragm
 		key: string;
 	};
 } = ( { attributes, innerBlocks, renderedHtml, cssClassNames } ) => {
-	const styleObject = attributes?.style ? getStylesFromAttributes( attributes as CoreBlockAttributes & { style: string } ) : undefined;
+	const styleObject = attributes?.style ? getStylesFromAttributes( attributes as undefined as CoreBlockAttributes & { style: string } ) : undefined;
 
 	const renderedClassNames = getClassNamesFromString( renderedHtml ?? '' );
 	const classNames = Array.from( new Set( [ ...renderedClassNames, ...cssClassNames || [], attributes?.className ] ) ).filter( Boolean ).join( ' ' );

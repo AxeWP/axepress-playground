@@ -22,7 +22,7 @@ export const CoreGroup: WordPressBlock<CoreGroupFragFragment & BlockFragFragment
 	};
 } = ( { attributes, innerBlocks, renderedHtml, cssClassNames } ) => {
 	const tagName = attributes?.tagName ?? 'div';
-	const styleObject = attributes?.style ? getStylesFromAttributes( attributes as CoreBlockAttributes & { style: string } ) : undefined;
+	const styleObject = attributes?.style ? getStylesFromAttributes( attributes as undefined as CoreBlockAttributes & { style: string } ) : undefined;
 
 	const renderedClassNames = getClassNamesFromString( renderedHtml ?? '' );
 	const classNames = Array.from( new Set( [ ...renderedClassNames, ...cssClassNames || [], attributes?.className ] ) ).filter( Boolean ).join( ' ' );
