@@ -1,0 +1,10 @@
+.siteHeader {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+
+	div:first-of-type {
+		margin-left: auto;
+		flex-grow: 1;
+	}
+}

@@ -1,7 +1,7 @@
 
 import { gql } from '@apollo/client';
 import { FaustTemplate } from '@faustwp/core';
-import { Footer, Header, EntryHeader, Layout, Main, BlockContent } from '@/components';
+import { Footer, Header, EntryHeader, Layout, Main, BlockContent, ImageType } from '@/components';
 import { GetPageNodeQuery } from '@graphqlTypes';
 
 type CurrentPageType = GetPageNodeQuery['currentPage'] & {
@@ -29,7 +29,7 @@ const Page: FaustTemplate<GetPageNodeQuery> = ( { data, loading } ) => {
 			>
 				<EntryHeader
 					title={currentPage?.title ?? ''}
-					// image={currentPage?.featuredImage?.node }
+					image={currentPage?.featuredImage?.node as ImageType }
 					className="has-global-padding wp-block-group alignwide"
 				/>
 				{ !! editorBlocks?.length && (

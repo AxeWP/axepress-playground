@@ -1,13 +1,5 @@
-import { CoreColumn } from './CoreColumn';
-import { CoreColumns } from './CoreColumns';
-import { CoreGroup } from './CoreGroup';
-import { CoreImage } from './CoreImage';
-
-const blockComponents = [
-	CoreColumns,
-	CoreColumn,
-	CoreGroup,
-	CoreImage,
-];
-
-export default blockComponents;
+export * from './CoreColumn';
+export * from './CoreColumns';
+export * from './CoreGroup';
+export * from './DefaultBlock';
+export { default as default } from './blocks';

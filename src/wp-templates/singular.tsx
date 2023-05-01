@@ -1,7 +1,7 @@
 
 import { gql } from '@apollo/client';
 import { FaustTemplate } from '@faustwp/core';
-import { BlockContent, Footer, Header, Layout, EntryHeader, Main } from '@/components';
+import { BlockContent, Footer, Header, Layout, EntryHeader, Main, ImageType } from '@/components';
 import { GetSingularNodeQuery } from '@graphqlTypes';
 
 type CurrentPageType = GetSingularNodeQuery['currentPage'] & {
@@ -10,7 +10,7 @@ type CurrentPageType = GetSingularNodeQuery['currentPage'] & {
 
 const Singular: FaustTemplate<GetSingularNodeQuery> = ( { data, loading } ) => {
 	const currentPage = data?.currentPage as CurrentPageType;
-	const seo = data?.currentPage?.seo || {};
+	const seo = currentPage?.seo || {};
 	const globalStylesheet = data?.globalStylesheet;
 
 	const headerBlocks = data?.header?.activeTemplatePart?.editorBlocks;
@@ -26,7 +26,7 @@ const Singular: FaustTemplate<GetSingularNodeQuery> = ( { data, loading } ) => {
 					title={currentPage?.title ?? ''}
 					date={currentPage?.date ?? ''}
 					author={currentPage?.author?.node?.name ?? '' }
-					image={currentPage?.featuredImage?.node }
+					image={currentPage?.featuredImage?.node as ImageType }
 				/>
 				{ !! editorBlocks?.length && (
 					<BlockContent blocks={editorBlocks} fallbackContent={fallbackContent ?? undefined } />
@@ -51,9 +51,9 @@ Singular.query = gql`
 	${ BlockContent.fragments.blockContent } # Block Content
 	${ EntryHeader.fragments.headerWithMeta } # The fragment for the page header
 	query GetSingularNode($uri: String!) {
-		... GlobalStylesFrag
-		... HeaderTemplateAreaFrag
-		... FooterTemplateAreaFrag
+		...GlobalStylesFrag
+		...HeaderTemplateAreaFrag
+		...FooterTemplateAreaFrag
 		currentPage: nodeByUri(uri: $uri) {
 			id
 			uri

@@ -3,14 +3,9 @@ import { WordPressBlocksViewer } from '@faustwp/blocks';
 import { ContentBlock } from '@faustwp/blocks/dist/mjs/components/WordPressBlocksViewer';
 import { flatListToHierarchical } from '@faustwp/core';
 import { ListNode } from '@faustwp/core/dist/cjs/utils/flatListToHierarchical';
+import { CoreColumn, CoreColumns, CoreGroup, DefaultBlock } from '@/blocks';
 import { Parse } from '@/lib/parser';
-
 import { BlockContentFragFragment } from '@graphqlTypes';
-import { CoreColumn } from 'wp-blocks/CoreColumn';
-import { CoreColumns } from 'wp-blocks/CoreColumns';
-import { CoreGroup } from 'wp-blocks/CoreGroup';
-import { CoreImage } from 'wp-blocks/CoreImage';
-import { DefaultBlock } from 'wp-blocks/DefaultBlock';
 
 export const BlockContent = (
 	{
@@ -42,7 +37,6 @@ export const BlockContent = (
 
 BlockContent.fragments = {
 	blockContent: gql`
-		${ CoreImage.fragments.entry }
 		${ CoreGroup.fragments.entry }
 		${ CoreColumns.fragments.entry }
 		${ CoreColumn.fragments.entry }
@@ -55,9 +49,6 @@ BlockContent.fragments = {
 			parentId: parentClientId
 			innerBlocks {
 				__typename
-			}
-			... on CoreImage {
-				...CoreImageFrag
 			}
 			... on CoreGroup {
 				...CoreGroupFrag

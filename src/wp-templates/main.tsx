@@ -76,9 +76,9 @@ Index.query = gql`
 	${ Header.fragments.headerTemplateArea } # The Header Template Area
 	${ Footer.fragments.footerTemplateArea } # The Block Footer.
 	query GetIndexNode($uri: String!) {
-		... GlobalStylesFrag
-		... HeaderTemplateAreaFrag
-		... FooterTemplateAreaFrag
+		...GlobalStylesFrag
+		...HeaderTemplateAreaFrag
+		...FooterTemplateAreaFrag
 		currentPage: nodeByUri(uri: $uri) {
 			uri
 			... on NodeWithRankMathSeo {

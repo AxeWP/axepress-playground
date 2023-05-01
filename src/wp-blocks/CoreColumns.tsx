@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
-import { WordPressBlock } from '@faustwp/blocks';
-import cn from 'clsx';
-import { getStyleObjectFromString } from '@/utils/helpers';
-import { BlockFragFragment, CoreColumnFragFragment } from '@graphqlTypes';
-import { BlockContent } from 'components/elements';
+import { WordPressBlock, WordPressBlocksViewer } from '@faustwp/blocks';
+import { ContentBlock } from '@faustwp/blocks/dist/mjs/components/WordPressBlocksViewer';
+import { getClassNamesFromString, getStylesFromAttributes } from '@/utils/helpers';
+import { BlockFragFragment, CoreBlockAttributes, CoreColumnFragFragment } from '@graphqlTypes';
+import { DefaultBlock } from './DefaultBlock';
 
 export const CoreColumns: WordPressBlock<CoreColumnFragFragment & BlockFragFragment> & {
 	fragments: {
@@ -11,16 +11,19 @@ export const CoreColumns: WordPressBlock<CoreColumnFragFragment & BlockFragFragm
 		key: string;
 	};
 } = ( { attributes, innerBlocks, renderedHtml, cssClassNames } ) => {
-	const styleObject = attributes?.style ? getStyleObjectFromString( attributes.style ) : undefined;
+	const styleObject = attributes?.style ? getStylesFromAttributes( attributes as CoreBlockAttributes & { style: string } ) : undefined;
 
-	const classNames = cn( attributes?.className, cssClassNames );
+	const renderedClassNames = getClassNamesFromString( renderedHtml ?? '' );
+	const classNames = Array.from( new Set( [ ...renderedClassNames, ...cssClassNames || [], attributes?.className ] ) ).filter( Boolean ).join( ' ' );
 
 	return (
 		<div style={{ ...styleObject }} className={classNames}>
-			<BlockContent blocks={innerBlocks} fallbackContent={renderedHtml ?? ''} />
+			<WordPressBlocksViewer blocks={ innerBlocks as ContentBlock[] } fallbackBlock={DefaultBlock}/>
 		</div>
 	);
 };
+
+CoreColumns.displayName = 'CoreColumns';
 
 CoreColumns.fragments = {
 	entry: gql`

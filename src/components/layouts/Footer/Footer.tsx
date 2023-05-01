@@ -1,14 +1,14 @@
 import { gql } from '@apollo/client';
 import classNames from 'clsx';
 import { HTMLAttributes } from 'react';
+import { BlockContent } from '@/components';
 import { BlockContentFragFragment } from '@graphqlTypes';
-import { BlockContent } from 'components/elements';
 
 export const Footer = ( { blocks, className, ...props } : HTMLAttributes<HTMLDivElement> & {
 	blocks: BlockContentFragFragment['editorBlocks'];
 } ) => {
 	const classes = classNames(
-		'has-global-padding mb-4',
+		'site-footer wp-block-template-part',
 		className,
 	);
 

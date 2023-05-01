@@ -4,7 +4,7 @@ import { FaustProvider } from '@faustwp/core';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { StrictMode } from 'react';
-import blocks from '../wp-blocks';
+import blocks from '@/blocks';
 import type { AppProps } from 'next/app';
 
 // Styles
@@ -22,7 +22,7 @@ const App = ( { Component, pageProps }: AppProps ) => {
 			<FaustProvider pageProps={ pageProps }>
 				<WordPressBlocksProvider
 					config={{
-						blocks: blocks as WordPressBlock[],
+						blocks: blocks as unknown as WordPressBlock[],
 					} }
 				>
 					<Component { ...pageProps } key={router.asPath}/>

@@ -8,7 +8,7 @@ export const Header = ( { blocks, className, ...props } : HTMLAttributes<HTMLDiv
 	blocks: BlockContentFragFragment['editorBlocks'],
 } ) => {
 	const classes = classNames(
-		`relative mx-auto has-global-padding mt-4`,
+		`relative site-header wp-block-template-part`,
 		className,
 	);
 

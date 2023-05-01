@@ -7,3 +7,10 @@ E.g:
 	@apply bg-transparent;
 }
 */
+
+.size-full {
+	@apply relative;
+	img {
+		@apply w-full h-full object-cover;
+	}
+}

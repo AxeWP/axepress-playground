@@ -4,8 +4,13 @@ import { PropsWithoutRef, CSSProperties } from 'react';
 import { EntryHeaderWithMetaFragFragment } from '@graphqlTypes';
 
 // There's probably a better way to infer this type.
-type IntermediaryFragType = EntryHeaderWithMetaFragFragment & {__typename: 'Post'};
-export type ImageType = IntermediaryFragType['featuredImage']['node'];
+type IntermediaryFragType = ( EntryHeaderWithMetaFragFragment & {__typename: 'Post'} )['featuredImage'] & {
+	__typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge'
+}
+
+export type ImageType = IntermediaryFragType['node'] & {
+	__typename: 'MediaItem'
+}
 
 export const Image = ( {
 	image,
@@ -26,7 +31,7 @@ export const Image = ( {
 	style?: CSSProperties,
 }> ) => {
 	const src = image?.sourceUrl;
-	const { altText = '' } = image;
+	const { altText = '' } = image || {};
 	const originalWidth = image?.mediaDetails?.width;
 	const originalHeight = image?.mediaDetails?.height;
 
@@ -43,10 +48,10 @@ export const Image = ( {
 	if ( width && height ) {
 		imageProps.width = width;
 		imageProps.height = height;
-	} else if ( width ) {
+	} else if ( width && originalHeight && originalWidth ) {
 		imageProps.width = width;
 		imageProps.height = originalHeight * ( width / originalWidth );
-	} else if ( height ) {
+	} else if ( height && originalHeight && originalWidth ) {
 		imageProps.width = originalWidth * ( height / originalHeight );
 		imageProps.height = height;
 	}
