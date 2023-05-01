@@ -1,4 +1,4 @@
-import { MAIN_CONTENT_ID } from 'constants/selectors';
+import { MAIN_CONTENT_ID } from '@/constants';
 import type { PropsWithoutRef, ReactNode } from 'react';
 
 interface MainProps extends PropsWithoutRef<JSX.IntrinsicElements['main']> {

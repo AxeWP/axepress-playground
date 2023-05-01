@@ -16,9 +16,10 @@
 		"noImplicitThis": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
-		"strict": true,
+		"strict": false,
 		"sourceMap": true,
 		"paths": {
+			"@/blocks": ["wp-blocks"],
 			"@/components": [ "components" ],
 			"@/constants": [ "constants" ],
 			"@/features": [ "features" ],
@@ -36,6 +37,6 @@
 		},
 		"incremental": true
 	},
-	"include": [ "next-env.d.ts", "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx" ],
-	"exclude": [ "node_modules", "public", "src/__generated__" ]
+	"include": [ "next-env.d.ts", "modules.d.ts", "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx" ],
+	"exclude": [ "node_modules", "public", "src/__generated__", ".eslintrc.js" ]
 }

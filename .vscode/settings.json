@@ -1,6 +1,5 @@
 {
 	"eslint.validate": [
-		"vue",
 		"html",
 		"javascript",
 		"typescript",
@@ -26,5 +25,5 @@
 	"editor.quickSuggestions": {
 		"strings": true
 	},
-	"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
 }

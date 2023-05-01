@@ -9,8 +9,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const client = getApolloClient();
 
 type ResponseData = {
-  content_type: string
-  body: string
+	content_type: string
+	body: string
 }
 
 export default async function HandleFeeds(

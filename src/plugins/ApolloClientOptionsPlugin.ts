@@ -1,4 +1,4 @@
-import { HttpLink, NormalizedCacheObject } from '@apollo/client';
+import { NormalizedCacheObject, createHttpLink } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { getGraphqlEndpoint, FaustHooks } from '@faustwp/core';
 import type { ApolloClientOptions } from '@apollo/client/core/ApolloClient';
@@ -22,13 +22,13 @@ async function loggingFetch( input: RequestInfo, init?: RequestInit ): Promise<R
 		async text() {
 			const textStart = Date.now();
 			const result = await response.text();
-			console.log( `${ new Date().toISOString().slice( -13 ) } ⚙️  Read ${ body.operationName } response body in ${ Date.now() - textStart }ms (${ result.length } bytes)` );
+			console.log( `${ new Date().toISOString().slice( -13 ) } ⚙️ Read ${ body.operationName } response body in ${ Date.now() - textStart }ms (${ result.length } bytes)` );
 			return result;
 		},
 	};
 }
 
-const httpLink = new HttpLink( {
+const httpLink = createHttpLink( {
 	uri: getGraphqlEndpoint(), // The backend is at a different URL.
 	credentials: 'omit',
 	// Without this, no Origin is set despite the fact that the request is cross-origin.
@@ -46,7 +46,7 @@ const errorLink = onError( ( { graphQLErrors, networkError } ) => {
 	if ( graphQLErrors ) {
 		graphQLErrors.forEach( ( { message, locations, path } ) =>
 			console.log(
-				`[GraphQL error]: Message: ${ message }, Location: ${ locations }, Path: ${ path }`,
+				`[GraphQL error]: Message: ${ message }, Path: ${ path }, Locations: ${ locations?.toString() }`,
 			),
 		);
 	}

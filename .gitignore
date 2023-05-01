@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
+yarn.lock
 
 # testing
 /coverage
@@ -14,6 +16,8 @@
 
 # production
 /build
+/public/sw.js
+/public/sw.js.map
 
 # misc
 .DS_Store
@@ -34,7 +38,13 @@ yarn-error.log*
 # vercel
 .vercel
 
-# graphql-let
+# graphql-codegen
 __generated__
 *.graphql.d.ts
 *.graphqls.d.ts
+
+# apollo possibleTypes
+possibleTypes.json
+
+# typescript
+*.tsbuildinfo

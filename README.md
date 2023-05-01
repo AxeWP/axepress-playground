@@ -38,7 +38,7 @@ AxePress Labs - Playground is an example Next.JS app that uses WPGraphQL and Fau
 ## Getting Started
 - Run `npm install` or `yarn install` to install dependencies.
 - Copy `.env.example` to `.env` and update the values to match your environment. (See Faust.js Getting started).
-- Copy the Block Theme `style.css` file to the project.
+- Copy the Block Theme `style.css` file to the project. ([How to](https://github.com/axewp/axepress-playground/blob/demo/block-theme-support/HowTo.md))
 - Update tailwind.config.js to match your theme's colors, and apply any overrides you need in `src/styles/overrides.css`.
 - Run `npm run dev` or `yarn dev` to start the development server. (This will run `yarn prepare` which generates the types from GraphQL).
 - Start developing!
