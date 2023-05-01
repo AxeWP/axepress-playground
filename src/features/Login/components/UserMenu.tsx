@@ -1,10 +1,10 @@
 import { __, sprintf } from '@wordpress/i18n';
 import Link from 'next/link';
+import { useAuth, useLogout } from '../hooks';
 
 export const UserMenu = () => {
-	// We'll create hooks for these later.
-	const { isAuthenticated = false, userData = {}, isLoading = false } = {};
-	const { logout = () => null, isLoggingOut = false } = {};
+	const { isAuthenticated, userData, isLoading } = useAuth( {} );
+	const { logout, isLoading: isLoggingOut } = useLogout();
 
 	if ( isLoading ) {
 		return <></>;

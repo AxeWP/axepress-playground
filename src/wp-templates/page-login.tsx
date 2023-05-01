@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 import { FaustTemplate } from '@faustwp/core';
 import dynamic from 'next/dynamic';
 import { Footer, Header, Layout, Main, BlockContent } from '@/components';
-import { LoginFormContainer } from '@/features';
+import { LoginFormContainer, AuthenticationProvider } from '@/features';
 import { GetLoginPageNodeQuery, LoginClientFragFragment } from '@graphqlTypes';
 
 const GatedLogin = dynamic( () => import( '@/features' ).then( ( mod ) => mod.GatedLogin ) );
@@ -32,8 +32,9 @@ const Login: FaustTemplate<GetLoginPageNodeQuery> = ( { data, loading } ) => {
 					marginTop: 'var(--wp--preset--spacing--30)',
 				}}
 			>
-				{ /* @todo: We'll want to wrap this in an Authentication gate to prevent unauthorized access. */}
-				<GatedLogin editorBlocks={editorBlocks} loginClients={loginClients} />
+				<AuthenticationProvider redirectTo="/my-account" redirectOnError={false} >
+					<GatedLogin editorBlocks={editorBlocks} loginClients={loginClients} />
+				</AuthenticationProvider>
 			</Main>
 			<Footer blocks={footerBlocks}/>
 		</Layout>

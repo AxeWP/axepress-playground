@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import { FaustTemplate } from '@faustwp/core';
 import { Footer, Header, EntryHeader, Layout, Main, BlockContent, ImageType } from '@/components';
+import { AuthenticationProvider } from '@/features';
 import { GetAccountPageNodeQuery } from '@graphqlTypes';
 
 type CurrentPageType = GetAccountPageNodeQuery['currentPage'] & {
@@ -31,12 +32,11 @@ const MyAccount: FaustTemplate<GetAccountPageNodeQuery> = ( { data, loading } ) 
 					image={currentPage?.featuredImage?.node as ImageType }
 					className="has-global-padding wp-block-group alignwide"
 				/>
-
-				{ /* @todo: We'll want to wrap this in an Authentication gate to prevent unauthorized access. */}
-				{ !! editorBlocks?.length && (
-					<BlockContent blocks={editorBlocks} fallbackContent={fallbackContent ?? undefined } />
-				) }
-
+				<AuthenticationProvider redirectTo="/login" redirectOnError={true} >
+					{ !! editorBlocks?.length && (
+						<BlockContent blocks={editorBlocks} fallbackContent={fallbackContent ?? undefined } />
+					) }
+				</AuthenticationProvider>
 			</Main>
 			<Footer blocks={footerBlocks}/>
 		</Layout>

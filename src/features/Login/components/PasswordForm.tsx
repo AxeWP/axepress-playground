@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { usePasswordLogin } from '../hooks';
 
 export const PasswordForm = () => {
 	// get the redirectTo from the query params.
@@ -9,9 +10,7 @@ export const PasswordForm = () => {
 
 	const [ usernameEmail, setUsernameEmail ] = useState( '' );
 	const [ password, setPassword ] = useState( '' );
-
-	// We'll get this from our Authentication context later.
-	const { login, isLoading, errors } = {};
+	const { login, isLoading, errors } = usePasswordLogin();
 
 	return (
 		<form
@@ -71,5 +70,3 @@ export const PasswordForm = () => {
 		</form>
 	);
 };
-
-//"w-full flex justify-center bg-gradient-to-r from-indigo-500 to-blue-600 hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-4  "

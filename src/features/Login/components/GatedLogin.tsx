@@ -1,6 +1,7 @@
 
 import { __, sprintf } from '@wordpress/i18n';
 import { BlockContent, Loading } from '@/components';
+import { useAuthenticationContext } from '../providers';
 import { LoginFormContainer } from '.';
 import type { BlockContentFragFragment, LoginClientFragFragment } from '@graphqlTypes';
 
@@ -8,8 +9,7 @@ export const GatedLogin = ( { editorBlocks, loginClients } : {
 	editorBlocks: BlockContentFragFragment['editorBlocks'];
 	loginClients: LoginClientFragFragment[];
 } ) => {
-	// We'll get this from our Authentication context later.
-	const { isAuthenticated = false, userData = {}, isLoading = false } = {};
+	const { isAuthenticated, userData, isLoading } = useAuthenticationContext();
 
 	return (
 		<div className="wp-block-columns has-global-padding alignfull are-vertically-aligned-center justify-center is-layout-flex min-w-0">
